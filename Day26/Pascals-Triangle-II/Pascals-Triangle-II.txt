@@ -1,0 +1,36 @@
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+    public List<Integer> getRow(int n) {
+
+        List<List<Integer>> list = new ArrayList<>();
+
+        List<Integer> list2 = new ArrayList<>();
+
+        list2.add(1);
+        list.add(list2);
+
+        for (int i = 0; i < n; i++) {
+            List<Integer> list4 = new ArrayList<>();
+            list4.add(1);
+            for (int j = 0; j < list.get(i).size() - 1; j++) {
+                list4.add(list.get(i).get(j) + list.get(i).get(j + 1));
+            }
+
+            list4.add(1);
+
+            list.add(list4);
+        }
+
+        return list.get(n);
+    }
+
+    public static void main(String[] args) {
+        int rowIndex = 3;
+        Solution solution = new Solution();
+        List<Integer> row = solution.getRow(rowIndex);
+        System.out.println("Row " + rowIndex + " of Pascal's triangle: " + row);
+    }
+}
+

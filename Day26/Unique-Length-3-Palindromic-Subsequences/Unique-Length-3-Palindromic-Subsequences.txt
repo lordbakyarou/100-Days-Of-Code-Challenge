@@ -1,0 +1,38 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+
+class Solution {
+    public int countPalindromicSubsequence(String s) {
+
+        int count = 0;
+        for (char i = 'a'; i <= 'z'; i++) {
+            int start = s.indexOf(i);
+            int last = s.lastIndexOf(i);
+
+            if (start == -1 || last == -1)
+                continue;
+            if (start == last)
+                continue;
+
+            String sub = s.substring(start + 1, last);
+
+            for (int j = 0; j <= 26; j++) {
+                int index = sub.indexOf('a' + j);
+                if (index != -1)
+                    count++;
+            }
+        }
+
+        return count;
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        String input = "abca";
+        Solution solution = new Solution();
+        int count = solution.countPalindromicSubsequence(input);
+        System.out.println("Count of palindromic subsequences: " + count);
+    }
+}
+
