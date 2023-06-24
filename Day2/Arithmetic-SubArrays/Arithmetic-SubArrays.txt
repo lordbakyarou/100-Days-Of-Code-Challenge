@@ -1,0 +1,50 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+class Solution {
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        int[] nums = {4, 6, 5, 9, 3, 7};
+        int[] l = {0, 0, 2};
+        int[] r = {2, 3, 5};
+
+        List<Boolean> result = solution.checkArithmeticSubarrays(nums, l, r);
+        System.out.println(result);
+    }
+
+    public List<Boolean> checkArithmeticSubarrays(int[] nums, int[] l, int[] r) {
+        List<Boolean> list = new ArrayList<>();
+
+        int m = l.length;
+        for (int i = 0; i < m; i++) {
+            list.add(ifTrue(nums, l[i], r[i]));
+        }
+
+        return list;
+    }
+
+    public boolean ifTrue(int[] nums, int l, int r) {
+        int[] newarr = new int[r - l + 1];
+        int j = 0;
+
+        for (int i = l; i <= r; i++) {
+            newarr[j] = nums[i];
+            j++;
+        }
+
+        Arrays.sort(newarr);
+
+        j = 0;
+        while (j + 2 < newarr.length) {
+            if (newarr[j + 1] - newarr[j] != newarr[j + 2] - newarr[j + 1]) {
+                return false;
+            }
+            j++;
+        }
+
+        return true;
+    }
+}
+

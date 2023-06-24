@@ -1,0 +1,27 @@
+class Solution {
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        int[] nums = {0, 2, 1, 5, 3, 4};
+
+        int[] result = solution.buildArray(nums);
+        for (int num : result) {
+            System.out.print(num + " ");
+        }
+    }
+
+    public int[] buildArray(int[] nums) {
+        buildArr(nums, nums.length - 1);
+        return nums;
+    }
+
+    public void buildArr(int[] nums, int n) {
+        if (n < 0) {
+            return;
+        }
+        int temp = nums[nums[n]];
+        buildArr(nums, n - 1);
+        nums[n] = temp;
+    }
+}
+
