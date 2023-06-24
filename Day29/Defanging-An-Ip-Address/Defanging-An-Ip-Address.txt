@@ -1,0 +1,29 @@
+
+class Solution {
+    public String defangIPaddr(String address) {
+        StringBuilder sb = new StringBuilder(address);
+
+        for (int i = 0; i < sb.length(); i++) {
+            if (sb.charAt(i) == '.') {
+                sb.replace(i, i + 1, "[.]");
+                i += 2; // Skip the added "[.]" to avoid infinite loop
+            }
+        }
+
+        return sb.toString();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        // Usage example
+        String ip = "192.168.0.1";
+        String defangedIp = solution.defangIPaddr(ip);
+
+        System.out.println("Original IP: " + ip);
+        System.out.println("Defanged IP: " + defangedIp);
+    }
+}
+

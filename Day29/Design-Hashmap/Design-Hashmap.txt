@@ -1,0 +1,39 @@
+class MyHashMap {
+    int[] arr;
+
+    public MyHashMap() {
+        arr = new int[1000001];
+    }
+
+    public void put(int key, int value) {
+        arr[key] = value + 1;
+    }
+
+    public int get(int key) {
+        return arr[key] - 1;
+    }
+
+    public void remove(int key) {
+        arr[key] = 0;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyHashMap hashMap = new MyHashMap();
+
+        // Usage examples
+        hashMap.put(1, 100);
+        hashMap.put(2, 200);
+
+        System.out.println(hashMap.get(1)); // Output: 100
+        System.out.println(hashMap.get(2)); // Output: 200
+
+        hashMap.remove(1);
+
+        System.out.println(hashMap.get(1)); // Output: 0 (removed)
+
+        // Additional operations can be performed using the MyHashMap object
+    }
+}
+
