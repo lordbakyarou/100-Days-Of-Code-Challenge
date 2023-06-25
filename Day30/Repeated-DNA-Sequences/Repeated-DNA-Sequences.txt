@@ -1,0 +1,33 @@
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        String input = "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT";
+        List<String> repeatedSequences = solution.findRepeatedDnaSequences(input);
+        System.out.println(repeatedSequences);
+    }
+}
+
+class Solution {
+    public List<String> findRepeatedDnaSequences(String s) {
+        HashSet<String> set = new HashSet<>();
+        HashSet<String> set2 = new HashSet<>();
+        int i = 0;
+        int j = 10;
+
+        while (j <= s.length()) {
+            if (set.contains(s.substring(i, j))) {
+                set2.add(s.substring(i, j));
+            }
+            set.add(s.substring(i, j));
+            i++;
+            j++;
+        }
+
+        return new ArrayList<>(set2);
+    }
+}
+
