@@ -1,0 +1,25 @@
+public class Solution {
+    public int mySqrt(int x) {
+        if (x <= 1) {
+            return x;
+        }
+
+        long sq = 0;
+        long i = 1;
+
+        while (x >= sq) {
+            i++;
+            sq = i * i;
+        }
+
+        return (int) (i - 1);
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        int input = 16;
+        int result = solution.mySqrt(input);
+        System.out.println("Square root of " + input + " is: " + result);
+    }
+}
+
