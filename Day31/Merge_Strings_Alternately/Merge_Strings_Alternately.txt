@@ -1,0 +1,28 @@
+public class Solution {
+    public static void main(String[] args) {
+        String word1 = "abc";
+        String word2 = "defgh";
+
+        Solution solution = new Solution();
+        String mergedString = solution.mergeAlternately(word1, word2);
+
+        System.out.println("Merged String: " + mergedString);
+    }
+
+    public String mergeAlternately(String word1, String word2) {
+        int i = 0;
+        StringBuilder sb = new StringBuilder();
+
+        while (i < word1.length() && i < word2.length()) {
+            sb.append(word1.charAt(i));
+            sb.append(word2.charAt(i));
+            i++;
+        }
+
+        sb.append(word1.substring(i));
+        sb.append(word2.substring(i));
+
+        return sb.toString();
+    }
+}
+
