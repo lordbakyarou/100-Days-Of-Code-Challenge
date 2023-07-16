@@ -1,0 +1,27 @@
+class Solution {
+    public boolean arrayStringsAreEqual(String[] word1, String[] word2) {
+        StringBuilder sb = new StringBuilder();
+        StringBuilder sb2 = new StringBuilder();
+
+        for (String s : word1) {
+            sb.append(s);
+        }
+
+        for (String s : word2) {
+            sb2.append(s);
+        }
+
+        return sb2.toString().equals(sb.toString());
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        String[] word1 = {"abc", "def"};
+        String[] word2 = {"abcdef"};
+
+        boolean result = solution.arrayStringsAreEqual(word1, word2);
+        System.out.println("Are the arrays of strings equal? " + result);
+    }
+}
